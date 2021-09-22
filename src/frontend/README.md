@@ -27,7 +27,7 @@ The errors page has the only purpose of displaying the errors generated when the
 
 For each entity, the runtime view below shows the internal behavior:
 
-<img src="/views/frontend.svg" alt="frontend view">
+<img :src="$withBase('/views/frontend.svg')" alt="frontend view">
 
 _Entity Class_ is responsible for the filtering buttons logic.
 
@@ -48,7 +48,7 @@ This version uses the API exposed by the backend application. The page has two m
 
 For each entity, the runtime view below shows the internal behavior:
 
-<img src="/views/frontend_v2.svg" alt="frontend view_v2">
+<img :src="$withBase('/views/frontend_v2.svg')" alt="frontend view_v2">
 
 _Entity MatchesFilter_ is responsible for the filtering buttons logic.
 

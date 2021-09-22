@@ -6,7 +6,7 @@
 
 This system follows a distributed architectural. At the moment we host all applications in a single Virtual Machine.
 
-<img src="/views/deployment.svg" alt="Deployment View">
+<img :src="$withBase('/views/deployment.svg')" alt="Deployment View">
 
 Each application is represented as a deployment unit:
 

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/hub_logo.svg" alt="logo">
+  <img :src="$withBase('/hub_logo.svg')" alt="logo">
 </div>
 
 ::: warning
