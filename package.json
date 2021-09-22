@@ -1,0 +1,18 @@
+{
+  "name": "hub_documentation",
+  "version": "0.0.1",
+  "description": "Documentação da plataforma Hub USP Inovação desenvolvida pelo USPCodeLab",
+  "main": "index.js",
+  "authors": "",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  },
+  "dependencies": {
+    "vuepress-theme-default-prefers-color-scheme": "^2.0.0"
+  }
+}
