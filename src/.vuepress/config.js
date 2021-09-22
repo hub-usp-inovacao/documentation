@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Hub USPInovação',
   description: 'Documento com a arquitetura da plataforma',
+  base: '/documentation/',
   theme: 'default-prefers-color-scheme',
   head: [
     ['link', { rel: "icon", href: "/favicon.ico" }],
