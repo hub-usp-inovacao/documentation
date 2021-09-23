@@ -8,6 +8,13 @@ The backend is a Web API built with [Ruby on Rails][rails] in API mode. This mea
 
 The data inserted follows a different proccess: it's fetched from Google Spreadsheets.
 
+## Comprehended Entities
+
+The backend is still in expansion to comprehend all entities. The current list of entities managed by the backend is
+- Disciplines
+- Companies
+- Patents
+
 ## View
 
 The sequence diagram below shows how the data is fetched:
