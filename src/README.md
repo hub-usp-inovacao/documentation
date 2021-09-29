@@ -3,7 +3,7 @@
 </div>
 
 ::: warning
-Last update: September 23rd, 2021
+Last update: {{$page.lastUpdated}}
 :::
 
 **This doc contains all the architectural documentation about AUSPIN platform [Hub USPInovação](https://hubuspinovacao.if.usp.br/)**
