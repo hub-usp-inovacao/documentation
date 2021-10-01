@@ -22,7 +22,7 @@ The sequence diagram below shows how the data is fetched:
 
 <img :src="$withBase('/views/backend.svg')" alt="backend view">
 
-- _User_ is the management agent (see below).
+- _User_ is the scheduler (see below).
 
 - _Fetch_ is a Rake task stored in `/lib/tasks/fetch_spreadsheets.rake`
 
@@ -30,13 +30,14 @@ The sequence diagram below shows how the data is fetched:
 
 - _Entity_ represents a specific Rails model.
 
-## Management Agent
+## Scheduler
 
-In order to keep the data always updated, the system uses a ruby gem called `whenever` that exposes a high level interface to create [cron jobs][cron].
+In order to keep the data always updated, the system uses a ruby gem called [whenever][cron_gem] that exposes a high level interface to create [cron jobs][cron].
 
 The scheduler configuration can be found in `/config/schedule.rb`.
 
 [:arrow_left: Go back](/)
 
 [rails]: https://rubyonrails.org/
+[cron_gem]: https://github.com/javan/whenever
 [cron]: https://en.wikipedia.org/wiki/Cron
