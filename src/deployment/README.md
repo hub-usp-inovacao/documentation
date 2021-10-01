@@ -4,7 +4,7 @@
 
 ## Deployment View
 
-This system follows a distributed architectural. At the moment we host all applications in a single Virtual Machine.
+This system follows a distributed architectural. At the moment, we host all applications in a single Virtual Machine.
 
 <img :src="$withBase('/views/deployment.svg')" alt="Deployment View">
 
@@ -36,7 +36,21 @@ BACKEND_URL=
 The `.env` file, in the root of the application, configures all the environments variables.
 
 ```
+# App Context
+google_sheets_API_key=
+
+COMPANY_TAB_NAME=
+COMPANY_SHEET_ID=
+
+DISCIPLINE_TAB_NAME=
+DISCIPLINE_SHEET_ID=
+
+PATENT_TAB_NAME=
+PATENT_SHEET_ID=
+
+# Rails Context
 MONGO_INITDB_DATABASE=
+CORS_ALLOWED_ORIGIN=
 RAILS_ENV=production
 ```
 
