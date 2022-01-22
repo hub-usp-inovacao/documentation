@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Deployment | Hub USPInovação</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/documentation/favicon.ico">
+    <meta name="description" content="Documento com a arquitetura da plataforma">
+    
+    <link rel="preload" href="/documentation/assets/css/0.styles.6f67d42d.css" as="style"><link rel="preload" href="/documentation/assets/js/app.4f7e82e8.js" as="script"><link rel="preload" href="/documentation/assets/js/2.1073b648.js" as="script"><link rel="preload" href="/documentation/assets/js/9.b7bba92a.js" as="script"><link rel="prefetch" href="/documentation/assets/js/10.91b85584.js"><link rel="prefetch" href="/documentation/assets/js/3.9a897363.js"><link rel="prefetch" href="/documentation/assets/js/4.2c60607c.js"><link rel="prefetch" href="/documentation/assets/js/5.282f6305.js"><link rel="prefetch" href="/documentation/assets/js/6.78f0ada6.js"><link rel="prefetch" href="/documentation/assets/js/7.67d9ce3b.js"><link rel="prefetch" href="/documentation/assets/js/8.3ea5846f.js">
+    <link rel="stylesheet" href="/documentation/assets/css/0.styles.6f67d42d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/documentation/" class="home-link router-link-active"><img src="/documentation/hub_logo.svg" alt="Hub USPInovação" class="logo"> <span class="site-name can-hide">Hub USPInovação</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/documentation/frontend/" class="nav-link">
+  Front End
+</a></div><div class="nav-item"><a href="/documentation/backend/" class="nav-link">
+  Back End
+</a></div><div class="nav-item"><a href="/documentation/deployment/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Deployment
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/documentation/frontend/" class="nav-link">
+  Front End
+</a></div><div class="nav-item"><a href="/documentation/backend/" class="nav-link">
+  Back End
+</a></div><div class="nav-item"><a href="/documentation/deployment/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Deployment
+</a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="deployment"><a href="#deployment" class="header-anchor">#</a> Deployment</h1> <p></p><div class="table-of-contents"><ul><li><a href="#deployment-view">Deployment View</a><ul><li><a href="#configuration">Configuration</a></li></ul></li></ul></div><p></p> <h2 id="deployment-view"><a href="#deployment-view" class="header-anchor">#</a> Deployment View</h2> <p>This system follows a distributed architectural. At the moment, we host all applications in a single Virtual Machine.</p> <img src="/documentation/views/deployment.svg" alt="Deployment View"> <p>Each application is represented as a deployment unit:</p> <ul><li>The application itself;</li> <li>Its corresponding configurations.</li></ul> <p>The Caddy server acts as a gateway, placed on the edge of the VM. Its role is to redirect requests to the corresponding application.</p> <p>The backend recovers data from Google Spreadsheets and stores it in the database application as a local cache. It exposes an API to be consumed by the frontend.</p> <h3 id="configuration"><a href="#configuration" class="header-anchor">#</a> Configuration</h3> <p>This topic shows how to configurate all the application contexts</p> <h4 id="front-end"><a href="#front-end" class="header-anchor">#</a> Front End</h4> <p>The <code>.env</code> file, in the root of the application, configures all the environments variables.</p> <div class="language- extra-class"><pre class="language-text"><code>sheetsAPIKey=
+GOOGLE_ANALYTICS_ID=
+BACKEND_URL=
+</code></pre></div><h4 id="back-end"><a href="#back-end" class="header-anchor">#</a> Back End</h4> <p>The <code>.env</code> file, in the root of the application, configures all the environments variables.</p> <div class="language- extra-class"><pre class="language-text"><code># App Context
+google_sheets_API_key=
+
+COMPANY_TAB_NAME=
+COMPANY_SHEET_ID=
+
+DISCIPLINE_TAB_NAME=
+DISCIPLINE_SHEET_ID=
+
+PATENT_TAB_NAME=
+PATENT_SHEET_ID=
+
+# Rails Context
+MONGO_INITDB_DATABASE=
+CORS_ALLOWED_ORIGIN=
+RAILS_ENV=production
+</code></pre></div><h4 id="database"><a href="#database" class="header-anchor">#</a> DataBase</h4> <p>The <code>.env</code> file, in the root of the application, configures all the environments variables.</p> <div class="language- extra-class"><pre class="language-text"><code>MONGO_INITDB_DATABASE=
+</code></pre></div><h4 id="reverse-proxy"><a href="#reverse-proxy" class="header-anchor">#</a> Reverse proxy</h4> <p>The <code>Caddyfile</code> file makes all the <a href="https://caddyserver.com/docs/" target="_blank" rel="noopener noreferrer">Caddy<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> configuration.</p> <div class="language- extra-class"><pre class="language-text"><code>hubuspinovacao.if.usp.br
+
+handle_path /api/* {
+    uri strip_prefix /api
+    reverse_proxy localhost:3001
+}
+
+reverse_proxy /* localhost:3000
+</code></pre></div><p><a href="/documentation/" class="router-link-active">⬅️ Go back</a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">January 22, 2022</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/documentation/assets/js/app.4f7e82e8.js" defer></script><script src="/documentation/assets/js/2.1073b648.js" defer></script><script src="/documentation/assets/js/9.b7bba92a.js" defer></script>
+  </body>
+</html>
